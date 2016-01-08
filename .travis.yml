@@ -5,9 +5,9 @@ services:
   - postgresql
 before_script:
   - psql -c 'create database ci_test_test;' -U postgres
+  - pip install awscli
+  - aws --version
 script:
-  - python --version
-  - pip --version
   - bundle exec rake db:reset
   - bundle exec rake
   
