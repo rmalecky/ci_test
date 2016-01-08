@@ -6,6 +6,8 @@ services:
 before_script:
   - psql -c 'create database ci_test_test;' -U postgres
 script:
+  - python --version
+  - pip --version
   - bundle exec rake db:reset
   - bundle exec rake
   
