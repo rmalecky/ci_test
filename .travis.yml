@@ -1,12 +1,16 @@
 langauge: ruby
+sudo: required
+
 rvm: 
   - 2.2.3
 services: 
   - postgresql
+  - docker
+before_install:
+  - sudo pip install awscli
+  - aws --version
 before_script:
   - psql -c 'create database ci_test_test;' -U postgres
-  - sudo pip install --user awscli
-  - aws --version
 script:
   - bundle exec rake db:reset
   - bundle exec rake
