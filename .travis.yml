@@ -5,6 +5,8 @@ services:
   - postgresql
 before_script:
   - psql -c 'create database ci_test_test;' -U postgres
+script:
+  - bundle exec rake db:reset
   
 addons:
   postgresql: "9.4"
