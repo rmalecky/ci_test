@@ -1,20 +1,21 @@
 langauge: ruby
 sudo: required
-
-rvm: 
-  - 2.2.3
-services: 
-  - postgresql
-  - docker
+rvm:
+- 2.2.3
+services:
+- postgresql
+- docker
 before_install:
-  - sudo pip install awscli
-  - aws --version
+- echo $FOO
+- sudo pip install awscli
+- aws --version
 before_script:
-  - psql -c 'create database ci_test_test;' -U postgres
+- psql -c 'create database ci_test_test;' -U postgres
 script:
-  - bundle exec rake db:reset
-  - bundle exec rake
-  
+- bundle exec rake db:reset
+- bundle exec rake
 addons:
-  postgresql: "9.4"
-  
+  postgresql: '9.4'
+env:
+  global:
+    secure: VT1ST1VN6t6mt8TiZgTaB6IoOOKmU1uo1KCEQkhiIqaZJBdFnMj6QX+nR3u1Bo3LcEW8RjEb2kRKSUFJdrNlrlwNIqd9V7xVLcydLCiADmsT/wUqwWokt5LYvg7iFtT88F5pmgo5ciBINTLSyUGH2yHvyN1vEKAPDCpMaGhqAqY62FkjPfMGzCgD8/28R0FTC9Mm33snk2KM7c9TWlEB5bU2jDm83lgOHjbSA8TN8/gXHiTPD8cxR7LPCJ1rpGT3bTNoVdmocoLRM0dOFQcty4Na+iTVRHVCSwWBC+s5FKbGCIQkfAvfOBdNoxsGDW6mLY6QUE0aMtLH7sEoRfs/sYz+5mX2Z2jSb4D2KMDXKuTWfQgP4mZu9k1pweARDOso3LpLYbzF549sAIQZQkjJfcKgN8Ruc3RFclBYWZWovUr6XvXmgD0shVo7t9MYxr41Rbpa0AUqemuGF7iMPZYHGB7DITxVyS6DG0+vTBuC01aqeHSxCE+DMUrM4Nu4e5XEEO2S1snkkOfT7X8eYMjrkU8meBG1BVMDPubclT2WY+EwsTHUqHY+xu2HmNjpLiacEQYYjbyEy7EW8n2WP7yMSYYdBC2LiALFfX+R7YJMMwXkyqL6gTGBJfhktz1N39a5ZTcws2K2eI08O7NL4Ea+O4DWnjBUoxZVX/L3FLZ5/pE=
